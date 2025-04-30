@@ -6,9 +6,14 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:19:29 by btuncer           #+#    #+#             */
-/*   Updated: 2025/04/26 21:31:35 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/04/30 18:46:36 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define NAME xshell
-#define COMMANDS {"echo", "echo -n", "pwd"}
+
+typedef struct s_trash_node
+{
+	void	*mem;
+	struct s_trash_node	*next;
+}			t_trash;
