@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xshell.h                                           :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 21:19:29 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/01 17:27:41 by btuncer          ###   ########.fr       */
+/*   Created: 2025/06/13 17:45:56 by btuncer           #+#    #+#             */
+/*   Updated: 2025/06/17 19:00:53 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define NAME xshell
-#define PROMPT " $xshell~ "
-#include <unistd.h>
-#include <stdbool.h>
+typedef struct s_environment t_env;
+typedef struct s_environment_item t_env_item;
 
-typedef struct s_trash_node
+struct s_environment
 {
-	void	*mem;
-	struct s_trash_node	*next;
-}			t_trash;
+    t_env_item *first_node;
+    char *display_text;
+};
 
-void *alloc(ssize_t size);
-void trash_bin(bool dump, t_trash *trash);
+struct s_environment_item
+{
+    char *key;
+    char *value;
+    t_env_item *next;
+};
+
+t_env_item *new_env_item(char *key, char *val);
