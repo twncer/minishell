@@ -6,12 +6,12 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:19:29 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/01 17:27:41 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/20 19:12:56 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define NAME xshell
-#define PROMPT " $xshell~ "
+#define PROMPT " $shell~ "
 #include <unistd.h>
 #include <stdbool.h>
 

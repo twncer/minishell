@@ -6,11 +6,13 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:11:35 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/16 22:43:33 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/20 19:11:32 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+void *alloc(ssize_t);
 
 static unsigned int	split_count(char const *s, char c)
 {
@@ -81,7 +83,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = split_count(s, c);
-	splitted = malloc((word_count + 1) * sizeof(char *));
+	splitted = alloc((word_count + 1) * sizeof(char *));
 	if (!splitted)
 		return (NULL);
 	counter = 0;
@@ -89,7 +91,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s == c && *s)
 			s++;
-		splitted[counter] = malloc(short_len(s, c) + 1);
+		splitted[counter] = alloc(short_len(s, c) + 1);
 		if (!splitted[counter])
 			return (free_all(splitted, counter));
 		write_word(&splitted[counter], &s, short_len(s, c));

@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 19:28:17 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/16 20:14:23 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/20 18:56:55 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,15 @@ t_env_item *new_env_item(char *key, char *val)
     ft_strcpy(val, new_item->value);
     new_item->next = (void *)0;
     return (new_item);
+}
+t_env *new_env()
+{
+    t_env *new_environment;
+
+    new_environment = alloc(sizeof(t_env));
+    if (!new_environment)
+        return ((void *)0);
+    new_environment->first_node = NULL;
+    new_environment->display_text = NULL;
+    return (new_environment);
 }

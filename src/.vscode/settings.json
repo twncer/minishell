@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "xshell.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "env.h": "c"
     }
 }

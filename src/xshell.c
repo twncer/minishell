@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/17 19:13:31 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/20 19:58:08 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void e()
 void xshell()
 {
 	char *prompt;
-	
+		
 	using_history();
 	while (1)
 	{
