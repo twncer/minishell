@@ -20,5 +20,6 @@ bool	in(char *str, char c);
 ssize_t	len(char *str);
 void ft_strcpy(char *src, char *dst);
 bool ft_strcmp(char *str, char *to_cmp);
+char	**ft_split(char const *s, char c);
 
 #endif

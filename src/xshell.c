@@ -24,12 +24,16 @@
 
 void print_prefix();
 t_env *init_env();
-void print_env(t_env *);
+void print_env();
 
 void e()
 {
-	t_env *env = init_env();
-	print_env(env);
+	print_env();
+}
+
+void q()
+{
+	exit(0);
 }
 
 void xshell()
@@ -50,6 +54,7 @@ void xshell()
 		{
 			add_history(prompt);
 			if (prompt[0] == 'e') e();
+			else if (prompt[0] == 'q') q();
 			// minishell(prompt);
 		}
 		free(prompt);
@@ -65,6 +70,7 @@ void cya()
 
 int main()			
 {
+	init_env();
 	xshell_signals();
 	xshell();
 	exit(0);

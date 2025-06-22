@@ -18,7 +18,8 @@
 
 ssize_t len(char *str);
 
-char *get_cwd() {
+char *get_cwd()
+{
 	char cwd[8000];
 	char *response;
 	int counter;
