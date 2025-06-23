@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_init.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 19:43:10 by btuncer           #+#    #+#             */
+/*   Updated: 2025/06/23 19:43:11 by btuncer          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./env.h"
 #include <stdbool.h>
+#include <stdlib.h>
 
 bool is_ignored_env_item(char *key)
 {
@@ -41,10 +54,10 @@ t_env *get_env()
         environment = new_env();
         environment->first_node = new_env_item("__INIT__", "INIT");
     }
+    if (!environment)
+        exit(0);
     return (environment);
 }
-
-#include <stdio.h>
 
 void *init_env()
 {
@@ -53,12 +66,6 @@ void *init_env()
     env = get_env();
     if (!include_environ(env))
         return (NULL);
-
-    printf("-- ADDIN --\n");
-    add_env_item(new_env_item("NODE", "YENI_NODE"));
-    add_env_item(new_env_item("NODE", "YENI_NODE2"));
-    add_env_item(new_env_item("NODE", "YENI_NODE3"));
-    add_env_item(new_env_item("SHLVL", "73"));
-    printf("-- ADDED --\n");
+    configure_env();
     return (env);
 }

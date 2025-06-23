@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 16:35:35 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/20 20:38:39 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/23 19:56:27 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "stdlib.h"
 
 #include <stdio.h>
+char *get_cwd();
 
 t_env_item *is_env_item_exists(char *key)
 {
@@ -35,6 +36,8 @@ t_env_item *add_env_item(t_env_item *new_item)
     t_env_item *node;
     t_env_item *node_exists;
 
+    if (!new_item)
+        return (NULL);
     node = get_env()->first_node;
 
     node_exists = is_env_item_exists(new_item->key);
@@ -68,4 +71,16 @@ void print_env()
         write(1, "\n", 1);
         node = node->next;
     }
+}
+
+void configure_env()
+{
+    t_env_item *item_exists;
+    
+    add_env_item(new_env_item("PWD", get_cwd()));
+    item_exists = is_env_item_exists("SHLVL");
+    if (item_exists)
+        increase_istr(item_exists->value);
+    else
+        add_env_item(new_env_item("SHLVL", "0"));
 }

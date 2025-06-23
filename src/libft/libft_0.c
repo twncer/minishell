@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 01:10:38 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/17 17:54:45 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/23 20:00:19 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,15 @@ bool ft_strcmp(char *str, char *to_cmp)
 		counter++;
 	}
 	return (true);
+}
+
+void increase_istr(char *str)
+{
+	char *last_digit = str + len(str) - 1;
+	if ((*last_digit) == '9')
+	{
+		(*last_digit) = '0'; // yok bu iş böyle olmaz buna bir ara atoi itoa yaz
+	}
+	else
+		(*last_digit) += 1;
 }

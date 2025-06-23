@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:45:56 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/17 19:00:53 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/23 18:56:04 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,4 @@ t_env_item *new_env_item(char *key, char *val);
 t_env *new_env();
 t_env *get_env();
 t_env_item *add_env_item(t_env_item *new_item);
+void configure_env();

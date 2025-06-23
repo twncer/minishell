@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 16:34:55 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/17 18:48:44 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/23 19:51:05 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string.h>
 
 ssize_t len(char *str);
+void *alloc(ssize_t size);
 
 char *get_cwd()
 {
@@ -26,7 +27,7 @@ char *get_cwd()
 	
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
 		return (NULL);
-	response = malloc(len(cwd) + 1);
+	response = alloc(len(cwd) + 1);
 	if (!response)
 		return (NULL);
 	counter = 0;
@@ -47,10 +48,7 @@ void pwd()
 	if (!cwd)
 		write(1, "pwd: couldn't fetch cwd.\n", 25);
 	else
-	{
 		write(1, cwd, len(cwd));
-		free(cwd);
-	}
 }
 
 static char *get_prefix()
@@ -70,7 +68,7 @@ static char *get_prefix()
 			break;
 		cwd_ptr--;
 	}
-	prefix = malloc(len(cwd_ptr) + 1);
+	prefix = alloc(len(cwd_ptr) + 1);
 	if (!prefix)
 		return (NULL);
 	counter = 0;
@@ -81,7 +79,6 @@ static char *get_prefix()
 		cwd_ptr++;
 	}
 	prefix[counter] = '\0';
-	free(cwd);
 	return (prefix);
 }
 
@@ -94,5 +91,4 @@ void print_prefix()
 		return ;
 	write(1, prefix, strlen(prefix));
 	write(1, "/.", 2);
-	free(prefix);
 }
