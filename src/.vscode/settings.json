@@ -3,6 +3,7 @@
         "unistd.h": "c",
         "xshell.h": "c",
         "stdlib.h": "c",
-        "env.h": "c"
+        "env.h": "c",
+        "stdio.h": "c"
     }
 }

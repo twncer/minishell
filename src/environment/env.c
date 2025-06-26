@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 16:35:35 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/23 19:56:27 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/26 18:10:21 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "stdlib.h"
 
 #include <stdio.h>
-char *get_cwd();
 
 t_env_item *is_env_item_exists(char *key)
 {
@@ -24,7 +23,7 @@ t_env_item *is_env_item_exists(char *key)
     node = get_env()->first_node;
     while (node)
     {
-        if (ft_strcmp(node->key, key) && printf("gotcha!\n"))
+        if (ft_strcmp(node->key, key))
             return (node);
         node = node->next;
     }
@@ -53,6 +52,32 @@ t_env_item *add_env_item(t_env_item *new_item)
     return (node);
 }
 
+t_env_item *get_env_item(char *key)
+{
+    t_env_item *item_exists;
+
+    item_exists = is_env_item_exists(key);
+    if (!item_exists)
+        return (NULL);
+    return (item_exists);
+}
+
+void unset_env_item(char *key)
+{
+    t_env_item *item_exists;
+    t_env_item *env_item;
+    t_env_item *dummy;
+        
+    item_exists = is_env_item_exists(key);
+    if (!item_exists)
+        return ;    
+    env_item = get_env()->first_node;
+    while (!ft_strcmp((env_item->next)->key, key))
+        env_item = env_item->next;
+    dummy = env_item->next;
+    env_item->next = (env_item->next)->next;
+}
+
 void print_env()
 {
     t_env_item *node;
@@ -71,16 +96,4 @@ void print_env()
         write(1, "\n", 1);
         node = node->next;
     }
-}
-
-void configure_env()
-{
-    t_env_item *item_exists;
-    
-    add_env_item(new_env_item("PWD", get_cwd()));
-    item_exists = is_env_item_exists("SHLVL");
-    if (item_exists)
-        increase_istr(item_exists->value);
-    else
-        add_env_item(new_env_item("SHLVL", "0"));
 }

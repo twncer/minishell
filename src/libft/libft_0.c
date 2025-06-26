@@ -6,12 +6,14 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 01:10:38 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/23 20:00:19 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/26 18:12:08 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <sys/types.h>
+
+void *alloc(ssize_t size);
 
 bool is_str_empty(char *str)
 {
@@ -73,6 +75,8 @@ bool ft_strcmp(char *str, char *to_cmp)
 	int counter;
 
 	counter = 0;
+	if (len(str) != len(to_cmp))
+		return (false);
 	while (str[counter])
 	{
 		if (str[counter] != to_cmp[counter])
@@ -82,13 +86,64 @@ bool ft_strcmp(char *str, char *to_cmp)
 	return (true);
 }
 
-void increase_istr(char *str)
+long ft_atol(char *str)
 {
-	char *last_digit = str + len(str) - 1;
-	if ((*last_digit) == '9')
+	long res;
+
+	res = 0;
+	while (*str)
 	{
-		(*last_digit) = '0'; // yok bu iş böyle olmaz buna bir ara atoi itoa yaz
+		res = res * 10;
+		res = res + (*str - 48);
+		str++;
 	}
-	else
-		(*last_digit) += 1;
+
+	return (res);
+}
+
+long len_digit(long l)
+{
+	int n;
+
+	n = 0;
+	while (l)
+	{
+		n++;
+		l /= 10;
+	}
+	return (n);
+}
+
+long power_of10(long times)
+{
+	long res;
+
+	res = 1;
+	while (times--)
+		res *= 10;
+	return (res);
+}
+
+char *ft_ltoa(long l)
+{
+	char *res;
+	int n;
+	int counter;
+	
+	if (l == 0)
+		return ("0");
+	n = len_digit(l);
+	res = alloc((n + 1) * sizeof(char));
+	if (!res)
+		return ((void *)0);
+	counter = 0;
+	while (n > 0)
+	{
+		res[counter] = l / power_of10(n - 1) + 48;
+		counter++;
+		l = l % power_of10(n - 1);
+		n--;
+	}
+	res[counter] = '\0';
+	return (res);
 }

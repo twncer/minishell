@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 01:13:06 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/23 19:56:08 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/25 01:36:03 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void ft_strcpy(char *src, char *dst);
 bool ft_strcmp(char *str, char *to_cmp);
 char	**ft_split(char const *s, char c);
 void increase_istr(char *str);
+long ft_atol(char *str);
+char *ft_ltoa(long l);
 
 #endif
