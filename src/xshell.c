@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/26 18:12:06 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:43:44 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,12 @@ void cya()
 	printf("exit\n");
 }
 
+void expand_str(char *str);
+
 int main()			
 {
+
+	exit(0);
 	init_env();
 	xshell_signals();
 	xshell();

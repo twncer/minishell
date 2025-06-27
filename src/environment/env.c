@@ -6,15 +6,13 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 16:35:35 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/26 18:10:21 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:26:50 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./env.h"
 #include "./../libft/libft.h"
 #include "stdlib.h"
-
-#include <stdio.h>
 
 t_env_item *is_env_item_exists(char *key)
 {
