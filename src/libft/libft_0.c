@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 01:10:38 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/26 18:12:08 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:29:26 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,19 @@ void ft_strcpy(char *src, char *dst)
 
 	counter = 0;
 	while (counter < len(src))
+	{
+		dst[counter] = src[counter];
+		counter++;
+	}
+	dst[counter] = '\0';
+}
+
+void ft_strncpy(char *src, char *dst, int n)
+{
+	ssize_t counter;
+
+	counter = 0;
+	while (counter < len(src) && counter < n)
 	{
 		dst[counter] = src[counter];
 		counter++;

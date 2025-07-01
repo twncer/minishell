@@ -6,10 +6,8 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:27:16 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/27 16:42:44 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:39:52 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../environment/env.h"
-
-void expand_str(char *str);

@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/30 18:04:48 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:55:46 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void cya()
 	printf("exit\n");
 }
 
-void expand_str(char *str);
+char *trim_expandable(char *str);
 
 int main()			
 {
-
+	char *q = trim_expandable("buraktuncer$selam");
 	exit(0);
 	init_env();
 	xshell_signals();
