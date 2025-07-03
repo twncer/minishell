@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/07/01 17:55:46 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/03 07:55:05 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 void print_prefix();
 t_env *init_env();
 void print_env();
+int valid_dollar_count(char *str);
 
 void e()
 {
@@ -69,12 +70,23 @@ void cya()
 }
 
 char *trim_expandable(char *str);
+char **expandables_queue(char *str);
+void expand_queue(char **queue);
 
 int main()			
 {
-	char *q = trim_expandable("buraktuncer$selam");
-	exit(0);
 	init_env();
+	
+	char **queue = expandables_queue("$\'burak\'");
+	int counter = 0;
+	while (queue[counter])
+	{
+		printf("> |%s\n", queue[counter]);
+		counter++;
+	}
+	expand_queue(queue);
+
+	exit(0);
 	xshell_signals();
 	xshell();
 	exit(0);
