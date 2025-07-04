@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/07/03 07:55:05 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/04 03:40:35 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,65 @@ void cya()
 }
 
 char *trim_expandable(char *str);
-char **expandables_queue(char *str);
+char **queue_expandables(char *str);
 void expand_queue(char **queue);
 
 int main()			
 {
+	char *prompt;
+	char **queue;
+	int counter = 0;
+	
 	init_env();
 	
-	char **queue = expandables_queue("$\'burak\'");
-	int counter = 0;
+	print_prefix();
+	prompt = readline(PROMPT);
+	printf("\nPROMPT: >%s<\n\n\n", prompt);
+
+	queue = queue_expandables(prompt);
+
+	printf("___ EXPANDABLES ___\n\n");
 	while (queue[counter])
 	{
 		printf("> |%s\n", queue[counter]);
 		counter++;
 	}
+
 	expand_queue(queue);
+	counter = 0;
+	
+	printf("\n___ EXPANDED QUEUE ___\n\n");
+	while (queue[counter])
+	{
+		printf("> |%s\n", queue[counter]);
+		counter++;
+	}
 
 	exit(0);
 	xshell_signals();
 	xshell();
 	exit(0);
 }
+
+// echo $'burak' => burak
+// echo $"burak" => $burak
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

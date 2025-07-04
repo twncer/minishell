@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:28:30 by btuncer           #+#    #+#             */
-/*   Updated: 2025/07/03 07:53:05 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/04 06:54:26 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@ void *alloc(ssize_t size);
 bool is_expander_esc_char(char ch)
 {
     return (in(" '$\"", ch));
+}
+
+bool is_expandable(char *str)
+{
+    // adresten başlayıp (triggerdan başlayacak) esc_char'a kadar gidip hmm ama o zaman türe bakman lazım
+    // halledersin kocum 
+}
+
+bool is_expandable_trigger(char ch)
+{
+    // ~ $ < (" ' bunları direkt de alabilirsin ama idk bakariz)
 }
 
 int valid_dollar_count(char *str)
@@ -85,7 +96,7 @@ void insert_to_queue(char **queue, int queue_counter, char *insert)
     queue[queue_counter][counter] = '\0';
 }
 
-char **expandables_queue(char *str)
+char **queue_expandables(char *str)
 {
     bool in_dquote;
     bool in_quote;
