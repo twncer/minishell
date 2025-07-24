@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 19:43:10 by btuncer           #+#    #+#             */
-/*   Updated: 2025/06/26 18:10:25 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/11 12:32:05 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_env *get_env()
         exit(0);
     return (environment);
 }
+
 void unset_env_item(char *key);
 
 void configure_env()

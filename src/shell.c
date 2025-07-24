@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xshell.c                                           :+:      :+:    :+:   */
+/*   shell.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 21:21:20 by btuncer           #+#    #+#             */
-/*   Updated: 2025/07/04 03:40:35 by btuncer          ###   ########.fr       */
+/*   Updated: 2025/07/18 17:49:24 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "./libft/libft.h"
 #include "./signals/xshell_signals.h"
 #include "./xshell.h"
-#include "./environment/env.h"
+#include "./expand/expand.h"
 
 void print_prefix();
 t_env *init_env();
@@ -69,9 +69,9 @@ void cya()
 	printf("exit\n");
 }
 
-char *trim_expandable(char *str);
 char **queue_expandables(char *str);
 void expand_queue(char **queue);
+void implement_queue(char **prompt, char **queue);
 
 int main()			
 {
@@ -81,6 +81,7 @@ int main()
 	
 	init_env();
 	
+	write(1, "EXPANDABLE GIR > ", 17);
 	print_prefix();
 	prompt = readline(PROMPT);
 	printf("\nPROMPT: >%s<\n\n\n", prompt);
@@ -103,6 +104,13 @@ int main()
 		printf("> |%s\n", queue[counter]);
 		counter++;
 	}
+
+	printf("\n\n> expander tool:\n");
+	printf("OLD_LEN: %d\nNEW_LEN: %d\n", get_expander(0)->old_len, get_expander(0)->new_len);
+
+	printf("\n\n-- FINAL OUTPUT: --\n");
+	implement_queue(&prompt, queue);
+	printf(">%s<\n", prompt);
 
 	exit(0);
 	xshell_signals();
